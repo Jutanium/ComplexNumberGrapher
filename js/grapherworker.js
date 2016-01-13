@@ -7,23 +7,20 @@ onmessage = function (e) {
     var width = e.data.width;
     var height = e.data.height;
     var precision = e.data.precision;
-
-    //console.log("func: " + func + ", width: " + width + ", height: " + height);
-
-    for (var x = math.floor(startX / precision); x < math.floor(endX / precision); x++) {
+    //First precision option
+    /*for (var x = math.floor(startX / precision); x < math.floor(endX / precision); x++) {
         for (var y = 0; y < math.floor(height / precision); y++) {
             var pixel = graphFunction(x, y, func, width, height, precision);
             postMessage(pixel);
-            /*for (var i = 1; i <= precision; i++;)
-             for (var j = 1; j <= precision; j++) {
-             postMessage(
-             {
-             x: pixel.x + i;
-             });
-             }
-             }*/
+        }
+    }*/
+    //Second precision option
+    for (var x = startX; x < endX; x += precision) {
+        for (var y = 0; y < height; y += precision) {
+            postMessage(graphFunction(x, y, func, width, height, 1));
         }
     }
+
     close();
     /*
      var result = math.eval(func.replace('z', '(' + real + '+' + imag + 'i') + ')');

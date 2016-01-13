@@ -8,7 +8,7 @@ const height = graphCanvas.height;
 const newline = "</br>";
 
 var currentWorker;
-var precision = 5;
+var precision = 2;
 var input;
 
 function line(context, x, y, toX, toY, strokewidth) {
@@ -72,8 +72,12 @@ function startWorker() {
 
         for (i = 0; i < precision; i++)
             for (j = 0; j <  precision; j++) {
-                fillPixelHSL(point.x * precision + i, point.y * precision + j, point.degree, 100, point.light);
+                //First precision option:
+                //fillPixelHSL(point.x * precision + i, point.y * precision + j, point.degree, 100, point.light);
+                //Second precision option
+                fillPixelHSL(point.x + i, point.y + j, point.degree, 100 , point.light);
             }
+
 
     }
 }
@@ -89,7 +93,7 @@ axesCanvas.addEventListener('mousemove', function (e) {
     var x = e.clientX - rect.left;
     var y = e.clientY - rect.top;
 
-    var point = graphFunction(x, y, input, width, height, precision);
+    var point = graphFunction(x, y, input, width, height, 1);
 
     $('#debug').html(
         'z = ' + point.number + newline
