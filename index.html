@@ -1,0 +1,38 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="css/mathquill.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+	<div>
+		<canvas id="graph" width="500px" height ="500px" style="
+			z-index: 1;
+			position:absolute;
+			left: 50px;
+			top: 50px;
+		">
+		</canvas>
+		<canvas id="axes"  width="500px" height ="500px" style="
+			z-index: 2;
+			position:absolute;
+			left: 50px;
+			top: 50px;
+		">
+		</canvas>
+	
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/mathquill.min.js"></script>
+	<script type="text/javascript" src="js/math.js"></script>
+	<script type="text/javascript" src="js/staticfunctions.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+<div style="position:absolute; top:0px; left:550px">
+<span class="mathquill-embedded-latex">f(z) = </span>
+<span id="inputTextbox" class="mathquill-editable"></span>
+<button onclick = "graph()">Graph</button>
+<span id="debug"> </span>
+</div>
+<div>
+
+</div>
+</body>
+</html>

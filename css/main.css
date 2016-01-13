@@ -1,0 +1,10 @@
+#canvas {
+	border: 1px black;
+}
+
+#popout {
+   -moz-box-shadow:    inset 0 0 10px #000000;
+   -webkit-box-shadow: inset 0 0 10px #000000;
+   box-shadow:         inset 0 0 10px #000000;
+   border-radius:    5px;
+}
