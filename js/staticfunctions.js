@@ -11,8 +11,9 @@ function graphFunction(x, y, func, width, height, precision) {
   if (degree < 0)
     degree = (degree + 360);
   var light = math.atan(magnitude) / (Math.PI / 2) * 50;
-  var number = real + (imag < 0 ? '' : '+') + imag
-  var returnObj = {
+  var number = real + (imag < 0 ? '' : '+') + imag;
+
+  return {
     x: x,
     y: y,
     result: result,
@@ -20,9 +21,7 @@ function graphFunction(x, y, func, width, height, precision) {
     degree: degree,
     light: light,
     number: number
-  }; 
-
-  return returnObj;
+  };
 }
 
 //Struct
