@@ -1,5 +1,19 @@
-#canvas {
-	border: 1px black;
+canvas {
+    position:absolute;
+    left: 50px;
+    top: 50px;
+    border: 1px solid black;
+}
+canvas#graph {
+    z-index: 1;
+}
+
+canvas#axes {
+    z-index: 2;
+}
+canvas#overlay {
+    z-index:3;
+
 }
 
 #popout {
