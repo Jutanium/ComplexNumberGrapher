@@ -11,7 +11,7 @@ function graphFunction(x, y, func, width, height, precision) {
     var degree = math.arg(result) * 360 / (2 * Math.PI);
     if (degree < 0)
         degree = (degree + 360);
-    var light = math.atan(magnitude) / (Math.PI / 2) * 100;
+    var light = math.atan(magnitude/2) / (Math.PI / 2) * 100;
     var number = real + (imag < 0 ? '' : '+') + imag;
 
     return {

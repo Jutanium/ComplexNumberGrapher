@@ -4,22 +4,13 @@
 <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
-	<div>
-		<canvas id="graph" width="500px" height ="500px" style="
-			z-index: 1;
-			position:absolute;
-			left: 50px;
-			top: 50px;
-		">
+    <div id="canvases">
+		<canvas id="graph" width="500px" height ="500px">
 		</canvas>
-		<canvas id="axes"  width="500px" height ="500px" style="
-			z-index: 2;
-			position:absolute;
-			left: 50px;
-			top: 50px;
-		">
+		<canvas id="axes"  width="500px" height ="500px">
 		</canvas>
-	
+        <canvas id="rollover" width="500px" height="500px"></canvas>
+    </div>
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/mathquill.min.js"></script>
 	<script type="text/javascript" src="js/math.js"></script>
@@ -31,8 +22,6 @@
 <button onclick = "graph()">Graph</button>
 <span id="debug"> </span>
 </div>
-<div>
 
-</div>
 </body>
 </html>

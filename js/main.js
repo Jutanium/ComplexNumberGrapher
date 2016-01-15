@@ -8,7 +8,7 @@ const height = graphCanvas.height;
 const newline = "</br>";
 
 var currentWorker;
-var precision = 2;
+var precision = 4;
 var input;
 
 function line(context, x, y, toX, toY, strokewidth) {
@@ -99,7 +99,7 @@ axesCanvas.addEventListener('mousemove', function (e) {
         'z = ' + point.number + newline
         + 'f(z) = ' + point.result + newline
         + '|f(z)| = ' + point.magnitude + newline
-        + '&thta; of f(z) = ' + point.degree + newline
+        + '&theta; of f(z) = ' + point.degree + newline
         + 'HSL light at ' + '(' + x + ', ' + y + ') = ' + point.light);
 
     fillPixelHSL(x, y, point.degree, 100, point.light);
