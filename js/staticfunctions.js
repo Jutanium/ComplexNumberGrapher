@@ -4,15 +4,18 @@ function graphFunction(x, y, func, width, height, precision) {
     var imag = (-1 * math.floor(height / 2 / precision) + y) / -25;
 
     console.log(func);
-    var result = math.eval(func.replace('z', '(' + real + '+' + imag + 'i') + ')');
+    var replaced = func.replace('z', '(' + real + '+' + imag + 'i' + ')');
+    console.log(replaced);
+    var eval = math.eval(replaced);
+    var result = math.round(eval.re, 4) + (eval.im < 0 ? '' : '+') + math.round (eval.im, 4) + 'i';
     //console.log("result: " + result);
-    var magnitude = math.abs(result);
+    var magnitude = math.abs(eval);
 
-    var degree = math.arg(result) * 360 / (2 * Math.PI);
+    var degree = math.arg(eval) * 360 / (2 * Math.PI);
     if (degree < 0)
         degree = (degree + 360);
     var light = math.atan(magnitude/2) / (Math.PI / 2) * 100;
-    var number = real + (imag < 0 ? '' : '+') + imag;
+    var number = real + (imag < 0 ? '' : '+') + imag + 'i';
 
     return {
         x: x,

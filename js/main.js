@@ -7,9 +7,10 @@ const width = graphCanvas.width;
 const height = graphCanvas.height;
 const newline = "</br>";
 
-var currentWorker;
+var currentWorker; //Web worker. One at a time!
 var precision = 2;
 var input;
+var currentImage; //(Array) Stores the x, y, number, result, magnitude, degree, and light of every point in the image
 
 function line(context, x, y, toX, toY, strokewidth) {
     context.beginPath();
@@ -66,7 +67,10 @@ function startWorker() {
     var grapher = new Worker("js/grapherworker.js");
     currentWorker = grapher;
     grapher.postMessage({input: input, startX: 0, endX: width, width: width, height: height, precision: precision});
-
+    currentImage = new Array(width);
+    for (var i = 0; i < currentImage.length; i++) {
+        currentImage[i] = new Array(height);
+    }
     grapher.onmessage = function (e) {
         var point = e.data;
 
@@ -76,6 +80,7 @@ function startWorker() {
                 //fillPixelHSL(point.x * precision + i, point.y * precision + j, point.degree, 100, point.light);
                 //Second precision option
                 fillPixelHSL(point.x + i, point.y + j, point.degree, 100 , point.light);
+                currentImage[point.x + i][point.y + j] = point;
             }
 
 
@@ -100,8 +105,9 @@ axesCanvas.addEventListener('mousemove', function (e) {
     var x = e.clientX - rect.left;
     var y = e.clientY - rect.top;
 
-    var point = graphFunction(x, y, input, width, height, 1);
-
+    if (typeof currentImage !== 'undefined')
+        var point = currentImage[x][y];
+    else var point = graphFunction(x, y, input, width, height, 1);
     $('#debug').html(
         'z = ' + point.number + newline
         + 'f(z) = ' + point.result + newline
@@ -110,8 +116,9 @@ axesCanvas.addEventListener('mousemove', function (e) {
         + 'HSL light at ' + '(' + x + ', ' + y + ') = ' + point.light);
 
     fillPixelHSL(x, y, point.degree, 100, point.light);
-    $("#popout").offset({top: e.clientY + 10, left: e.clientX + 10});
-    $("#popout").html(point.number);
+    var popout = $("#popout");
+    popout.offset({top: e.clientY + 10, left: e.clientX + 10});
+    popout.html(point.result + newline);
     //startWorker(x, y);
 });
 
