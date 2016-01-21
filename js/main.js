@@ -8,7 +8,7 @@ const height = graphCanvas.height;
 const newline = "</br>";
 
 var currentWorker;
-var precision = 4;
+var precision = 2;
 var input;
 
 function line(context, x, y, toX, toY, strokewidth) {
@@ -82,6 +82,13 @@ function startWorker() {
     }
 }
 
+axesCanvas.addEventListener('mouseenter', function (e) {
+    $("#popout").show();
+});
+
+axesCanvas.addEventListener('mouseleave', function (e) {
+    $("#popout").hide();
+});
 axesCanvas.addEventListener('mousemove', function (e) {
     console.log("rollover");
     updateInput();
@@ -103,8 +110,10 @@ axesCanvas.addEventListener('mousemove', function (e) {
         + 'HSL light at ' + '(' + x + ', ' + y + ') = ' + point.light);
 
     fillPixelHSL(x, y, point.degree, 100, point.light);
-
+    $("#popout").offset({top: e.clientY + 10, left: e.clientX + 10});
+    $("#popout").html(point.number);
     //startWorker(x, y);
-}, false);
+});
+
 
 axes();

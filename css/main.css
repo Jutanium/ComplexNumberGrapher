@@ -1,5 +1,5 @@
 canvas {
-    position:absolute;
+    position: absolute;
     left: 50px;
     top: 50px;
     border: 1px solid black;
@@ -11,14 +11,19 @@ canvas#graph {
 canvas#axes {
     z-index: 2;
 }
-canvas#overlay {
-    z-index:3;
 
+
+div#popout {
+    position: absolute;
+    display: none;
+    z-index: 3;
+    padding: 5px;
+    -moz-box-shadow:    inset 0 0 8px #000000;
+    -webkit-box-shadow: inset 0 0 8px #000000;
+    box-shadow:         inset 0 0 8px #000000;
+    border-radius:    5px;
 }
 
-#popout {
-   -moz-box-shadow:    inset 0 0 10px #000000;
-   -webkit-box-shadow: inset 0 0 10px #000000;
-   box-shadow:         inset 0 0 10px #000000;
-   border-radius:    5px;
+div#ui {
+    position:absolute; top:50px; left:600px
 }

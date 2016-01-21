@@ -9,18 +9,22 @@
 		</canvas>
 		<canvas id="axes"  width="500px" height ="500px">
 		</canvas>
-        <canvas id="rollover" width="500px" height="500px"></canvas>
     </div>
+
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/mathquill.min.js"></script>
 	<script type="text/javascript" src="js/math.js"></script>
 	<script type="text/javascript" src="js/staticfunctions.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
-<div style="position:absolute; top:0px; left:550px">
-<span class="mathquill-embedded-latex">f(z) = </span>
-<span id="inputTextbox" class="mathquill-editable"></span>
-<button onclick = "graph()">Graph</button>
-<span id="debug"> </span>
+    <div id="popout">
+    </div>
+    <div id="ui">
+        <div>
+            <span class="mathquill-embedded-latex">f(z) = </span>
+            <span id="inputTextbox" class="mathquill-editable"></span>
+            <button onclick = "graph()">Graph</button>
+        </div>
+        <div id="debug"> </div>
 </div>
 
 </body>
