@@ -6,21 +6,88 @@ var axesContext = axesCanvas.getContext('2d');
 const width = graphCanvas.width;
 const height = graphCanvas.height;
 const newline = "</br>";
+const popoutOpacity = 0;
+
+//There might be a better way to do this check...
+const complexNumberRegex = /^[+-]?[0-9]*[.]?[0-9]+[+-]{1}[0-9]*[.]?[0-9]+i$/;
 
 var currentWorker; //Web worker. One at a time!
 var precision = 2;
 var input;
 var currentImage; //(Array) Stores the x, y, number, result, magnitude, degree, and light of every point in the image
 
+$(document).ready(function() {
+    //'Initialization' stuff
+    drawAxes();
+    $("#popout").css('opacity', popoutOpacity);
+
+    //EVENTS
+    $('#z').on('input', function() {
+        var newNumber = $(this).html();
+        updateInput();
+        if (complexNumberRegex.test(newNumber))
+        {
+            var indexOfSplit = newNumber.lastIndexOf('+');
+            if (indexOfSplit == 0)
+                indexOfSplit = newNumber.lastIndexOf('-');
+            var real = newNumber.substring(0, indexOfSplit);
+            console.log("real: " + real);
+            var imag = newNumber.substring(newNumber.charAt(indexOfSplit) == '-' ? indexOfSplit : indexOfSplit + 1,
+                newNumber.length-1);
+            console.log("imag: " + imag);
+            updateDetails(graphFunctionComplexInput(real, imag, input));
+        }
+    });
+
+    axesCanvas.addEventListener('mouseenter', function (e) {
+        $("#popout").show();
+    });
+
+    axesCanvas.addEventListener('mouseleave', function (e) {
+        $("#popout").hide();
+    });
+    axesCanvas.addEventListener('mousemove', function (e) {
+        console.log("rollover");
+        updateInput();
+
+        if (input.indexOf('z') == -1)
+            return;
+
+        var rect = graphCanvas.getBoundingClientRect();
+        var x = e.clientX - rect.left;
+        var y = e.clientY - rect.top;
+
+        var point;
+        if (typeof currentImage !== 'undefined')
+            point = currentImage[x][y];
+        else point = graphFunction(x, y, input, width, height, 1);
+
+        updateDetails(point);
+
+        //fillPixelHSL(x, y, point.degree, 100, point.light);
+        var popout = $("#popout");
+        popout.offset({top: e.clientY + 10, left: e.clientX + 10});
+        popout.html(point.result + newline);
+        //startWorker(x, y);
+    });
+    axesCanvas.addEventListener('mousedown', function (e) {
+        $("#popout").css('opacity', '1');
+    });
+    axesCanvas.addEventListener('mouseup', function (e) {
+        $("#popout").css('opacity', popoutOpacity);
+    });
+
+});
+
 function line(context, x, y, toX, toY, strokewidth) {
     context.beginPath();
     context.moveTo(x, y);
-    context.lineTo(toX, toY)
+    context.lineTo(toX, toY);
     context.lineWidth = typeof strokewidth === 'number' ? strokewidth : 2;
     context.stroke();
 }
 
-function axes() {
+function drawAxes() {
     //Axes
     line(axesContext, 0, height / 2, width, height / 2);
     line(axesContext, width / 2, 0, width / 2, height);
@@ -37,24 +104,43 @@ function axes() {
     axesContext.fill();
 }
 
+//UNUSED
 function fillPixelRGB(x, y, r, g, b, a) {
-    graphContext.beginPath()
+    graphContext.beginPath();
     graphContext.fillStyle = "rgba(" + r + "," + g + "," + b + "," + (a / 255) + ")";
     graphContext.fillRect(x, y, 1, 1);
 }
 
 function fillPixelHSL(x, y, h, s, l) {
-    graphContext.beginPath()
+    graphContext.beginPath();
     graphContext.fillStyle = "hsl(" + h + "," + s + "%," + l + "%)";
     graphContext.fillRect(x, y, 1, 1);
 }
 
+function graphPoint(point) {
+    for (i = 0; i < precision; i++) {
+        for (j = 0; j < precision; j++) {
+            //First precision option:
+            //fillPixelHSL(point.x * precision + i, point.y * precision + j, point.degree, 100, point.light);
+            //Second precision option
+            fillPixelHSL(point.x + i, point.y + j, point.degree, 100, point.light);
+            currentImage[point.x + i][point.y + j] = point;
+        }
+    }
+}
 function updateInput() {
+    //TODO: Legit validation, function recognition, etc
     input = $('#inputTextbox').mathquill('text')
         .replace('**', '^')
-        .replace('cdot ', '*');
+        .replace('cdot ', '*')
 }
-
+function updateDetails(point) {
+    $('#z').html(point.number);
+    $('#output').html(point.result);
+    $('#magnitude').html(point.magnitude);
+    $('#degree').html(point.degree);
+    $('#light').html(point.light);
+}
 //On graph button click
 function graph() {
     graphContext.clearRect(0, 0, graphCanvas.width, graphCanvas.height); //Clear the graph
@@ -74,54 +160,8 @@ function startWorker() {
     grapher.onmessage = function (e) {
         var point = e.data;
         //console.log(point.x + ", " + point.y);
-        for (i = 0; i < precision; i++)
-            for (j = 0; j <  precision; j++) {
-                //First precision option:
-                //fillPixelHSL(point.x * precision + i, point.y * precision + j, point.degree, 100, point.light);
-                //Second precision option
-                fillPixelHSL(point.x + i, point.y + j, point.degree, 100 , point.light);
-
-                 currentImage[point.x + i][point.y + j] = point;
-            }
-
-
+        graphPoint(point);
     }
 }
 
-axesCanvas.addEventListener('mouseenter', function (e) {
-    $("#popout").show();
-});
 
-axesCanvas.addEventListener('mouseleave', function (e) {
-    $("#popout").hide();
-});
-axesCanvas.addEventListener('mousemove', function (e) {
-    console.log("rollover");
-    updateInput();
-
-    if (input.indexOf('z') == -1)
-        return;
-
-    var rect = graphCanvas.getBoundingClientRect();
-    var x = e.clientX - rect.left;
-    var y = e.clientY - rect.top;
-
-    if (typeof currentImage !== 'undefined')
-        var point = currentImage[x][y];
-    else var point = graphFunction(x, y, input, width, height, 1);
-    $('#debug').html(
-        'z = ' + point.number + newline
-        + 'f(z) = ' + point.result + newline
-        + '|f(z)| = ' + point.magnitude + newline
-        + '&theta; of f(z) = ' + point.degree + newline
-        + 'HSL light at ' + '(' + x + ', ' + y + ') = ' + point.light);
-
-    fillPixelHSL(x, y, point.degree, 100, point.light);
-    var popout = $("#popout");
-    popout.offset({top: e.clientY + 10, left: e.clientX + 10});
-    popout.html(point.result + newline);
-    //startWorker(x, y);
-});
-
-
-axes();
