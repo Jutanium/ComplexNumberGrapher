@@ -73,14 +73,15 @@ function startWorker() {
     }
     grapher.onmessage = function (e) {
         var point = e.data;
-
+        //console.log(point.x + ", " + point.y);
         for (i = 0; i < precision; i++)
             for (j = 0; j <  precision; j++) {
                 //First precision option:
                 //fillPixelHSL(point.x * precision + i, point.y * precision + j, point.degree, 100, point.light);
                 //Second precision option
                 fillPixelHSL(point.x + i, point.y + j, point.degree, 100 , point.light);
-                currentImage[point.x + i][point.y + j] = point;
+
+                 currentImage[point.x + i][point.y + j] = point;
             }
 
 

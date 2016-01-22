@@ -7,7 +7,12 @@ function graphFunction(x, y, func, width, height, precision) {
     var replaced = func.replace('z', '(' + real + '+' + imag + 'i' + ')');
     console.log(replaced);
     var eval = math.eval(replaced);
-    var result = math.round(eval.re, 4) + (eval.im < 0 ? '' : '+') + math.round (eval.im, 4) + 'i';
+    var result;
+    if (eval == '-Infinity')
+        result = '-Infinity';
+    else if (eval == 'Infinity' || eval == 'NaN - aNi')
+        result = 'Infinity';
+    else result = math.round(eval.re, 4) + (eval.im < 0 ? '' : '+') + math.round (eval.im, 4) + 'i';
     //console.log("result: " + result);
     var magnitude = math.abs(eval);
 
