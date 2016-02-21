@@ -10,15 +10,24 @@ function graphFunction(x, y, func, width, height, precision) {
 }
 function graphFunctionComplexInput(real, imag, func) {
     console.log(func);
-    var replaced = func.replace('z', '(' + real + '+' + imag + 'i' + ')');
+    var replaced = func
+        .replace(/\|(.+)\|/, "abs($1)") //turn |whatever| into abs(whatever)
+        .replace('z', '(' + real + '+' + imag + 'i' + ')') //replace z with input
+        .replace('0+0i', '0'); //0+0i is bugged in some functions, such as f(z) = z^2
     console.log(replaced);
     var eval = math.eval(replaced);
+    console.log(eval)
     var result;
     if (eval == '-Infinity')
         result = '-Infinity';
     else if (eval == 'Infinity' || eval == 'NaN - aNi')
         result = 'Infinity';
-    else result = math.round(eval.re, roundTo) + (eval.im < 0 ? '' : '+') + math.round (eval.im, roundTo) + 'i';
+    else {
+        if (typeof eval.re === "undefined") //If the answer isn't in the form of x+yi
+            result = math.round(eval, roundTo) + '+0i';
+        else
+            result = math.round(eval.re, roundTo) + (eval.im < 0 ? '' : '+') + math.round (eval.im, roundTo) + 'i';
+    }
     //console.log("result: " + result);
     var magnitude = math.abs(eval);
 

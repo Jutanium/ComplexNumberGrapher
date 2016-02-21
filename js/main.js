@@ -39,6 +39,10 @@ $(document).ready(function() {
         }
     });
 
+    //Makes sure the user can't put newlines or spaces when they edit the z! The regex will catch other stuff
+    $("#z").keypress(function(e){
+        return (e.which != 13 && e.which != 9 && e.which != 32);
+    });
     axesCanvas.addEventListener('mouseenter', function (e) {
         $("#popout").show();
     });
@@ -66,7 +70,7 @@ $(document).ready(function() {
 
         //fillPixelHSL(x, y, point.degree, 100, point.light);
         var popout = $("#popout");
-        popout.offset({top: e.clientY + 10, left: e.clientX + 10});
+        popout.css({top: y + 10, left: x + 10});
         popout.html(point.result + newline);
         //startWorker(x, y);
     });
