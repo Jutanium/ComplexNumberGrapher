@@ -22,10 +22,10 @@ $(document).ready(function() {
     $("#popout").css('opacity', popoutOpacity);
 
     //EVENTS
-    $('#z').on('input', function() {
+    $('#z').on('input', function() { //When the user edits the z directly
         var newNumber = $(this).html();
         updateInput();
-        if (complexNumberRegex.test(newNumber))
+        if (complexNumberRegex.test(newNumber)) //If it's a valid complex number
         {
             var indexOfSplit = newNumber.lastIndexOf('+');
             if (indexOfSplit == 0)
@@ -54,8 +54,8 @@ $(document).ready(function() {
             return;
 
         var rect = graphCanvas.getBoundingClientRect();
-        var x = e.clientX - rect.left;
-        var y = e.clientY - rect.top;
+        var x = e.clientX - Math.round(rect.left);
+        var y = e.clientY - Math.round(rect.top);
 
         var point;
         if (typeof currentImage !== 'undefined')
@@ -87,6 +87,9 @@ function line(context, x, y, toX, toY, strokewidth) {
     context.stroke();
 }
 
+/**
+ * Draw graph axes
+ */
 function drawAxes() {
     //Axes
     line(axesContext, 0, height / 2, width, height / 2);
@@ -140,6 +143,7 @@ function updateDetails(point) {
     $('#magnitude').html(point.magnitude);
     $('#degree').html(point.degree);
     $('#light').html(point.light);
+    $('#arrow').css('left', point.degree);
 }
 //On graph button click
 function graph() {

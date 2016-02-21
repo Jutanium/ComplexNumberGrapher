@@ -1,37 +1,58 @@
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="css/mathquill.css">
-<link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/mathquill.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--Fonts-->
+    <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
 </head>
 <body>
-    <div id="canvases">
-		<canvas id="graph" width="500px" height ="500px">
-		</canvas>
-		<canvas id="axes"  width="500px" height ="500px">
-		</canvas>
-    </div>
-
-	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/mathquill.min.js"></script>
-	<script type="text/javascript" src="js/math.js"></script>
-	<script type="text/javascript" src="js/staticfunctions.js"></script>
-	<script type="text/javascript" src="js/main.js"></script>
-    <div id="popout">
-    </div>
-    <div id="ui">
-        <div>
+    <h1>
+        Complex Number Grapher
+    </h1>
+    <div id="bodyWrapper">
+    <div id="inputWrapper">
+        <div id="input">
             <span class="mathquill-embedded-latex">f(z) = </span>
             <span id="inputTextbox" class="mathquill-editable"></span>
             <button onclick = "graph()">Graph</button>
         </div>
-        <div id="details">
-            <div> z = <span id="z" contentEditable="true"> </span> </div>
-            <div> f(z) = <span id="output"> </span> </div>
-            <div> |f(z)| = <span id="magnitude"> </span> </div>
-            <div> &theta; of f(z) = <span id="degree"> </span> </div>
-            <div> HSL light of pixel: <span id = "light"> </span> </div>
+    </div>
+    <div id="centerWrapper">
+        <div id="canvases" class="unselectable">
+            <canvas class="canvases" id="graph" width="500px" height ="500px">
+            </canvas>
+            <canvas class="canvases" id="axes"  width="500px" height ="500px">
+            </canvas>
+
         </div>
-</div>
+        <div id="ui">
+
+            <div id="details">
+                <div> z = <span id="z" contentEditable="true"> </span> </div>
+                <div> f(z) = <span id="output"> </span> </div>
+                <div> |f(z)| = <span id="magnitude"> </span> </div>
+                <div> &theta; of f(z) = <span id="degree"> </span> </div>
+                <div> HSL light of pixel: <span id = "light"> </span> </div>
+            </div>
+
+            <div class="relative">
+                <div id="slider" class="unselectable">
+                </div>
+                <div id="arrow"></div>
+            </div>
+        </div>
+        <!--<canvas id="inputTriangle" class="unselectable" width = "250px" height="250px"></canvas>
+        <canvas id="outputTriange" class="unselectable" width = "250px" height="250px"></canvas>-->
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/mathquill.min.js"></script>
+        <script type="text/javascript" src="js/math.js"></script>
+        <script type="text/javascript" src="js/staticfunctions.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+    </div>
+    </div>
+        <div id="popout" class="unselectable"></div>
+
+
 
 </body>
 </html>

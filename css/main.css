@@ -1,8 +1,36 @@
-canvas {
+h1 {
+    font-family: 'Inconsolata';
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+div#bodyWrapper {
+    text-align:center;
+}
+
+div#input {
+    display:inline-block;
+    margin-bottom: 20px;
+}
+#centerWrapper {
+    top: 0;
+    left: 0;
+    display:inline-block;
+}
+#canvases {
+    position:relative;
+    width:500px;
+    height:500px;
+    display: inline-block;
+    float: left;
+}
+.canvases {
     position: absolute;
-    left: 50px;
-    top: 50px;
+    left: 0;
+    top: 0;
     border: 1px solid black;
+
 }
 canvas#graph {
     z-index: 1;
@@ -12,6 +40,55 @@ canvas#axes {
     z-index: 2;
 }
 
+div#ui {
+    padding-left: 15px;
+    text-align: left;
+    float:left;
+    display:inline-block;
+}
+
+div#slider {
+
+    background: -webkit-linear-gradient(left, hsla(0, 96%, 54%, 1),
+      hsla(10, 96%, 54%, 1), hsla(20, 96%, 54%, 1),
+      hsla(30, 96%, 54%, 1), hsla(40, 96%, 54%, 1),
+      hsla(50, 96%, 54%, 1), hsla(60, 96%, 54%, 1),
+      hsla(70, 96%, 54%, 1), hsla(80, 96%, 54%, 1),
+      hsla(90, 96%, 54%, 1), hsla(100, 96%, 54%, 1),
+      hsla(110, 96%, 54%, 1), hsla(120, 96%, 54%, 1),
+      hsla(130, 96%, 54%, 1), hsla(140, 96%, 54%, 1),
+      hsla(150, 96%, 54%, 1), hsla(160, 96%, 54%, 1),
+      hsla(170, 96%, 54%, 1), hsla(180, 96%, 54%, 1),
+      hsla(190, 96%, 54%, 1), hsla(200, 96%, 54%, 1),
+      hsla(210, 96%, 54%, 1), hsla(220, 96%, 54%, 1),
+      hsla(230, 96%, 54%, 1), hsla(240, 96%, 54%, 1),
+      hsla(250, 96%, 54%, 1), hsla(260, 96%, 54%, 1),
+      hsla(270, 96%, 54%, 1), hsla(280, 96%, 54%, 1),
+      hsla(290, 96%, 54%, 1), hsla(300, 96%, 54%, 1),
+      hsla(310, 96%, 54%, 1), hsla(320, 96%, 54%, 1),
+      hsla(330, 96%, 54%, 1), hsla(340, 96%, 54%, 1),
+      hsla(350, 96%, 54%, 1), hsla(350, 96%, 54%, 1));
+    /*Same code as above, but for firefox*/
+    background: -moz-linear-gradient(left, hsla(0, 96%, 54%, 1), hsla(10, 96%, 54%, 1),hsla(20, 96%, 54%, 1),hsla(30, 96%, 54%, 1),hsla(40, 96%, 54%, 1),hsla(50, 96%, 54%, 1),hsla(60, 96%, 54%, 1),hsla(70, 96%, 54%, 1),hsla(80, 96%, 54%, 1),hsla(90, 96%, 54%, 1),hsla(100, 96%, 54%, 1),hsla(110, 96%, 54%, 1),hsla(120, 96%, 54%, 1),hsla(130, 96%, 54%, 1),hsla(140, 96%, 54%, 1),hsla(150, 96%, 54%, 1),hsla(160, 96%, 54%, 1),hsla(170, 96%, 54%, 1),hsla(180, 96%, 54%, 1),hsla(190, 96%, 54%, 1),hsla(200, 96%, 54%, 1),hsla(210, 96%, 54%, 1),hsla(220, 96%, 54%, 1),hsla(230, 96%, 54%, 1),hsla(240, 96%, 54%, 1),hsla(250, 96%, 54%, 1),hsla(260, 96%, 54%, 1),hsla(270, 96%, 54%, 1),hsla(280, 96%, 54%, 1),hsla(290, 96%, 54%, 1),hsla(300, 96%, 54%, 1),hsla(310, 96%, 54%, 1),hsla(320, 96%, 54%, 1),hsla(330, 96%, 54%, 1),hsla(340, 96%, 54%, 1),hsla(350, 96%, 54%, 1),hsla(360, 96%, 54%, 1));
+    /*display:inline-block;*/
+    width: 360px;
+    height: 20px;
+    left: 5px;
+    float: left;
+}
+
+div#arrow {
+    /*Triangles in css: The bottom border is black, but the left and right are transparent, making a triangle.
+    Width must be zero, height becomes position y.*/
+    width: 0;
+    height: 20px;
+
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid black;
+
+    position:absolute; /*so it can be positioned with jquery*/
+}
 
 div#popout {
     position: absolute;
@@ -25,6 +102,15 @@ div#popout {
     background-color: white;
 }
 
-div#ui {
-    position:absolute; top:50px; left:600px
+.unselectable {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+.relative {
+    position:relative;
 }
