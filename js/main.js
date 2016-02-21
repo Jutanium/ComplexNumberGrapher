@@ -15,11 +15,14 @@ var currentWorker; //Web worker. One at a time!
 var precision = 2;
 var input;
 var currentImage; //(Array) Stores the x, y, number, result, magnitude, degree, and light of every point in the image
-
+var MQ;
+var inputTextbox;
 $(document).ready(function() {
     //'Initialization' stuff
     drawAxes();
     $("#popout").css('opacity', popoutOpacity);
+    MQ = MathQuill.getInterface(2);
+    inputTextbox = MQ.MathField($('#inputTextbox')[0]);
 
     //EVENTS
     $('#z').on('input', function() { //When the user edits the z directly
@@ -136,10 +139,20 @@ function graphPoint(point) {
     }
 }
 function updateInput() {
-    //TODO: Legit validation, function recognition, etc
-    input = $('#inputTextbox').mathquill('text')
-        .replace('**', '^')
-        .replace('cdot ', '*')
+    //TODO: More validation
+    //input = inputTextbox.text()
+    //    .replace(/\\/g, '')
+     //   .replace(/\*\*/g, '^')
+     //   .replace(/\*/g, '')
+    //    .replace(/cdot/g, '*')
+    //Parse the latex that Mathquill gives us
+    input = inputTextbox.latex()
+        .replace(/\\left/g, '(') //get rid of \left
+        .replace(/\\right/g, ')') //get rid of \right
+        .replace(/\{(.+)\}/g, '($1)') //replace {whatever} with (whatever)
+        .replace(/\\cdot/g, '*') //replace bullet multiplication sign with *
+        .replace(/\\ /g, '') //get rid of spaces, which are backslashes followed by spaces in latex
+        .replace(/\\/g, ''); //get rid of remaining backslashes
 }
 function updateDetails(point) {
     $('#z').html(point.number);

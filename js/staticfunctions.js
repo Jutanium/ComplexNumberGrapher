@@ -12,21 +12,31 @@ function graphFunctionComplexInput(real, imag, func) {
     console.log(func);
     var replaced = func
         .replace(/\|(.+)\|/, "abs($1)") //turn |whatever| into abs(whatever)
-        .replace('z', '(' + real + '+' + imag + 'i' + ')') //replace z with input
-        .replace('0+0i', '0'); //0+0i is bugged in some functions, such as f(z) = z^2
+        .replace(/z/g, '(' + real + '+' + imag + 'i' + ')') //replace z with input
+        .replace(/0\+0i/g, '0'); //0+0i is bugged in some functions, such as f(z) = z^2, so make it 0
+        //.replace()
     console.log(replaced);
     var eval = math.eval(replaced);
-    console.log(eval)
+    console.log(eval);
     var result;
     if (eval == '-Infinity')
         result = '-Infinity';
     else if (eval == 'Infinity' || eval == 'NaN - aNi')
         result = 'Infinity';
     else {
-        if (typeof eval.re === "undefined") //If the answer isn't in the form of x+yi
+        if (typeof eval.re === "undefined") //If the answer isn't in the form of x+yi, make it so
             result = math.round(eval, roundTo) + '+0i';
-        else
-            result = math.round(eval.re, roundTo) + (eval.im < 0 ? '' : '+') + math.round (eval.im, roundTo) + 'i';
+        else {
+            result = '';
+            //Don't attempt to round any Infinity numbers!
+            if (eval.re == 'Infinity' || eval.re == '-Infinity')
+                result += result.re;
+            else result += math.round(eval.re, roundTo);
+            result += (eval.im < 0 ? '' : '+');
+            if (eval.im == 'Infinity' || eval.im == '-Infinity')
+                result += eval.im;
+            else result += math.round(eval.im, roundTo) + 'i';
+        }
     }
     //console.log("result: " + result);
     var magnitude = math.abs(eval);
