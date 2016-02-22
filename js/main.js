@@ -140,11 +140,6 @@ function graphPoint(point) {
 }
 function updateInput() {
     //TODO: More validation
-    //input = inputTextbox.text()
-    //    .replace(/\\/g, '')
-     //   .replace(/\*\*/g, '^')
-     //   .replace(/\*/g, '')
-    //    .replace(/cdot/g, '*')
     //Parse the latex that Mathquill gives us
     input = inputTextbox.latex()
         .replace(/\\left/g, '(') //get rid of \left
@@ -154,6 +149,12 @@ function updateInput() {
         .replace(/\\ /g, '') //get rid of spaces, which are backslashes followed by spaces in latex
         .replace(/\\/g, ''); //get rid of remaining backslashes
 }
+
+//Called by function buttons
+function insertFunction(text) {
+    inputTextbox.typedText(text);
+}
+
 function updateDetails(point) {
     $('#z').html(point.number);
     $('#output').html(point.result);
