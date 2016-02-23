@@ -131,6 +131,10 @@ div#popout {
     line-height: 150%;
     font-family: Inconsolata;
 }
+
+#about {
+    padding: 50px;
+}
 .unselectable {
     -moz-user-select: -moz-none;
     -khtml-user-select: none;
