@@ -154,6 +154,7 @@ function updateInput() {
     //TODO: More validation
     //Parse the latex that Mathquill gives us
     input = inputTextbox.latex()
+        .replace(/\\frac\{(.+)\}\{(.+)\}/, '($1)/($2)') //replace \frac{1}{2} notation
         .replace(/\\left/g, '(') //get rid of \left
         .replace(/\\right/g, ')') //get rid of \right
         .replace(/\{(.+)\}/g, '($1)') //replace {whatever} with (whatever)
