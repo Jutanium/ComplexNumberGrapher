@@ -7,12 +7,12 @@
 </head>
 <body>
     <h1>
-        Complex Number Grapher
+        Complex Function Grapher
     </h1>
     <div id="bodyWrapper">
     <div id="inputWrapper">
         <div id="input">
-            <span class="mathquill-embedded-latex">f(z) = </span>
+            <span class="staticMath">f(z) = </span>
             <span id="inputTextbox">sin(z)</span>
             <button onclick = "graph()">Graph</button>
             <span class="smallfont">Precision:</span> <input id="precision" type="number" min="1" max="4" value="2">
@@ -34,14 +34,15 @@
             <canvas class="canvases" id="axes"  width="500px" height ="500px">
             </canvas>
             <div id="popout" class="unselectable"></div>
+
         </div>
         <div id="ui">
 
             <div id="details">
-                <div> z = <span id="z" contentEditable="true"> </span> </div>
-                <div> f(z) = <span id="output"> </span> </div>
-                <div> |f(z)| = <span id="magnitude"> </span> </div>
-                <div> &theta; of f(z) = <span id="degree"> </span> </div>
+                <div> <i>z</i> = <span id="z" contentEditable="true"> </span> </div>
+                <div> <span class="staticMath"> f(z)</span> = <span id="output"> </span> </div>
+                <div> <span class="staticMath"> |f(z)| </span>= <span id="magnitude"> </span> </div>
+                <div> &theta; of <span class="staticMath">f(z)</span> = <span id="degree"> </span> </div>
                 <!--<div> HSL light of pixel: <span id = "light"> </span> </div>-->
             </div>
 
@@ -49,19 +50,39 @@
                 <div id="slider" class="unselectable"></div>
                 <div id="arrow"></div>
             </div>
+            <hr id="howtoBreak">
+            <div id="howto">
+                <h3>How to graph</h3>
+                <p> Type your complex function into the f(z) input box, making sure to include the input variable <i>z</i>.
+                    Then hit the Graph button and watch my program graph your function in the complex plane!
+                    If it graphs too slow, increase the <span class="smallfont">Precision</span> value and graph it again
+                    (a precision of 1 will calculate every point, 2 will calculate every other, and so on). Click on a
+                    point on the graph to see the exact output of the function at that point&mdash;you can also double click
+                    on the value of the z label on the right-hand pane to enter an exact input point.
+                    (Confused? Read about complex numbers below!)
+                </p>
+            </div>
         </div>
+
         <!--<canvas id="inputTriangle" class="unselectable" width = "250px" height="250px"></canvas>
         <canvas id="outputTriange" class="unselectable" width = "250px" height="250px"></canvas>-->
-        <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="js/mathquill.js"></script>
-        <script type="text/javascript" src="js/math.js"></script>
-        <script type="text/javascript" src="js/staticfunctions.js"></script>
-        <script type="text/javascript" src="js/main.js"></script>
+
     </div>
+        <div>
+            <h2> About Complex Numbers </h2>
+            <p>
+                I'm no complex analysist (the calculus field that deals with complex numbers), but here's my basic explanation.
+                Co
+            </p>
+        </div>
     </div>
 
 
 
-
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/mathquill.js"></script>
+    <script type="text/javascript" src="js/math.js"></script>
+    <script type="text/javascript" src="js/staticfunctions.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>

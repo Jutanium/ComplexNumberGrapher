@@ -20,12 +20,18 @@ var inputTextbox;
 
 $(document).ready(function() {
     //'Initialization' stuff
-    drawAxes();
     $("#popout").css('opacity', popoutOpacity);
+
     MQ = MathQuill.getInterface(2);
     inputTextbox = MQ.MathField($('#inputTextbox')[0]);
+    $(".staticMath").each(function() {
+        MQ.StaticMath(this);
+    })
+
     precisionBox = $('#precision');
 
+    drawAxes();
+    //EVENTS
     $('#z').on('input', function() { //When the user edits the z directly
         var newNumber = $(this).html();
         updateInput();
@@ -158,7 +164,6 @@ function updateInput() {
         //self contain e's, i's, and z's that aren't part of function names. (works since no functions have i, z, or e
         //followed by another i, z, or e. TODO: make work for ceil(x)
         .replace(/(i|z|e)(?=[0-9]|i|z|e|\s|\))/g, '($1)');
-    alert(input);
 }
 
 //Called by function buttons

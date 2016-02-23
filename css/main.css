@@ -5,6 +5,14 @@ h1 {
     margin-bottom: 20px;
 }
 
+h3 {
+    font-family: 'Inconsolata';
+    margin-bottom: -10px;
+}
+
+h2 {
+    font-family: 'Inconsolata'
+}
 div#bodyWrapper {
     text-align:center;
 }
@@ -113,6 +121,16 @@ div#popout {
     background-color: white;
 }
 
+
+#howtoBreak {
+    margin-top: 50px;
+}
+
+#howto {
+    width:450px;
+    line-height: 150%;
+    font-family: Inconsolata;
+}
 .unselectable {
     -moz-user-select: -moz-none;
     -khtml-user-select: none;
