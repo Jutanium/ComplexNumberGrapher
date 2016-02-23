@@ -133,7 +133,10 @@ div#popout {
 }
 
 #about {
-    padding: 50px;
+    display: inline-block;
+    width: 60%;
+    font-family: Inconsolata;
+    line-height: 150%;
 }
 .unselectable {
     -moz-user-select: -moz-none;

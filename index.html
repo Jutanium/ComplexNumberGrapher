@@ -6,15 +6,15 @@
     <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
 </head>
 <body>
-    <h1>
-        Complex Function Grapher
-    </h1>
-    <div id="bodyWrapper">
+<h1>
+    Complex Function Grapher
+</h1>
+<div id="bodyWrapper">
     <div id="inputWrapper">
         <div id="input">
             <span class="staticMath">f(z) = </span>
             <span id="inputTextbox">sin(z)</span>
-            <button onclick = "graph()">Graph</button>
+            <button onclick="graph()">Graph</button>
             <span class="smallfont">Precision:</span> <input id="precision" type="number" min="1" max="4" value="2">
         </div>
         <div id="functionButtons">
@@ -29,9 +29,9 @@
     </div>
     <div id="centerWrapper">
         <div id="canvases" class="unselectable">
-            <canvas class="canvases" id="graph" width="500px" height ="500px">
+            <canvas class="canvases" id="graph" width="500px" height="500px">
             </canvas>
-            <canvas class="canvases" id="axes"  width="500px" height ="500px">
+            <canvas class="canvases" id="axes" width="500px" height="500px">
             </canvas>
             <div id="popout" class="unselectable"></div>
 
@@ -39,10 +39,10 @@
         <div id="ui">
 
             <div id="details">
-                <div> <i>z</i> = <span id="z" contentEditable="true"> </span> </div>
-                <div> <span class="staticMath"> </span> f(z) = <span id="output"></span> </div>
-                <div> <span class="staticMath"> |f(z)| </span>= <span id="magnitude"> </span> </div>
-                <div> &theta; of <span class="staticMath">f(z)</span> = <span id="degree"> </span> </div>
+                <div><span class="staticMath">z=</span> <span id="z" contentEditable="true"> </span></div>
+                <div><span class="staticMath"> f(z) = </span> <span id="output"></span></div>
+                <div><span class="staticMath"> |f(z)| = </span> <span id="magnitude"> </span></div>
+                <div> &theta; of <span class="staticMath">f(z) = </span><span id="degree"> </span></div>
                 <!--<div> HSL light of pixel: <span id = "light"> </span> </div>-->
             </div>
 
@@ -53,11 +53,14 @@
             <hr id="howtoBreak">
             <div id="howto">
                 <h3>How to graph</h3>
-                <p> Type your complex function into the f(z) input box, making sure to include the input variable <i>z</i>.
+                <p> Type your complex function into the f(z) input box, making sure to include the input variable
+                    <i>z</i>.
                     Then hit the Graph button and watch my program graph your function in the complex plane!
-                    If it graphs too slow, increase the <span class="smallfont">Precision</span> value and graph it again
+                    If it graphs too slow, increase the <span class="smallfont">Precision</span> value and graph it
+                    again
                     (a precision of 1 will calculate every point, 2 will calculate every other, and so on). Click on a
-                    point on the graph to see the exact output of the function at that point&mdash;you can also double click
+                    point on the graph to see the exact output of the function at that point&mdash;you can also double
+                    click
                     on the value of the z label on the right-hand pane to enter an exact input point.
                     (Confused? Read about complex numbers below!)
                 </p>
@@ -68,26 +71,107 @@
         <canvas id="outputTriange" class="unselectable" width = "250px" height="250px"></canvas>-->
 
     </div>
-        <div id="about">
-            <h2> About Complex Numbers </h2>
-            <p>
-                I'm no expert of complex analysis (the calculus field that deals with complex numbers), but here's my basic explanation.
-                Complex numbers are numbers with two components: a real part and an imaginary part, usually written in the form
-                <span class="staticMath">a+bi</span>. <i>i</i>, while well known for being the square root of -1, also represents
-                a 90&deg; rotation. As such, a complex number can represent a point, with the real part representing the position
-                on the x-axis and the imaginary part representing the position on the y-axis.
-            </p>
-            <a title="Wolfkeeper at English Wikipedia [GFDL (http://www.gnu.org/copyleft/fdl.html) or CC BY-SA 3.0 (http://creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File%3AComplex_number_illustration.svg">
-                <img width="183" alt="Complex number illustration" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Complex_number_illustration.svg/223px-Complex_number_illustration.svg.png"/></a>
-        </div>
+    <div id="about">
+        <h2> About Complex Numbers </h2>
+        <p>
+            Here's my basic explanation.
+            Complex numbers are numbers with two components: a real part and an imaginary part, usually written in the
+            form
+            <span class="staticMath">a+bi</span>. The number <i>i</i>, while well known for being the square root of -1,
+            also represents
+            a 90&deg; rotation from the real number line. As such, a complex number can represent a point, with the real
+            part
+            representing the position on the horizontal, real number line and the imaginary part representing the
+            position on the imaginary or vertical axis.
+        </p>
+        <a title="Wolfkeeper at English Wikipedia [GFDL (http://www.gnu.org/copyleft/fdl.html) or CC BY-SA 3.0 (http://creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons"
+           href="https://commons.wikimedia.org/wiki/File%3AComplex_number_illustration.svg">
+            <img width="183" alt="Complex number illustration"
+                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Complex_number_illustration.svg/223px-Complex_number_illustration.svg.png"/></a>
+        <p>
+            Operations with complex numbers use the properties of <i>i</i> to transform these points. For example,
+            if we square the complex number <span class="staticMath">2+3i</span>, we expand <span class="staticMath">(2+3i)(2+3i)</span>
+            and get
+            <span class="staticMath">4 + 12i - 9 = -5 + 12i</span>. When we multiplied the 3i by 3i, the <i>i</i>s
+            multiply into -1.
+            Points represented as complex numbers are numbers like any other, and just like with real numbers, we can
+            define functions
+            that take in a complex numbers and output another complex number. But graphing complex functions is a lot
+            harder than graphing
+            normal functions. Why? A normal function takes in a number <i>x</i> and outputs a number <i>y</i>. But a
+            complex function
+            takes in a complex number, or point, <i>z</i> and outputs another complex number or point <i>w</i>.
+            We'd need four dimensions to graph a point to a point!
+        </p>
+        <p>
+            One solution to this is called <b>complex domain coloring</b>, and that's the what I've implemented in this
+            project.
+            Domain coloring makes every input complex number a point on a 2D graph, and every output complex number a
+            color.
+            It then colors each input point with its cooresponding output color. How do we choose a color for a complex
+            number?
+            If you imagine the complex number as a triangle like below, it has an angle &theta;. A number like
+            <span class="staticMath">1+1i</span>
+            will have a &theta; of 45&deg;, because if you move 1 unit to the right and 1 unit up you made a 45&deg;
+            slope. Similarly, <span class="staticMath">0+0i</span> will have a &theta; of 0&deg;,
+            <span class="staticMath">0+1i</span> will have a &theta; of 90&deg;, and <span
+                class="staticMath">0-1i</span>
+            will have a &theta; of 270&deg;.
+        </p>
+        <a title="Image Credit: Wolfram Alpha" href="http://mathworld.wolfram.com/ComplexNumber.html">
+            <img alt="Complex number circle"
+                 src="http://mathworld.wolfram.com/images/eps-gif/ComplexNumberArgand_1000.gif"</a>
+        </a>
+        <p>
+            A complex number also has a magnitude, or absolute value: the distance away from the origin. This
+            is the hypotenuse of the triangle above. You can find this by simply using the Pythogorean Theorem
+            using the real part and the imaginary part as the two known sides. For example,
+            <span class="staticMath">|3+4i| = \sqrt{3^{2}+4^{2}} = 5</span>, meaning
+            <span class="staticMath">3+4i</span> is 5 units away from the origin.
+        </p>
+        <p>
+            Once we know our angle and magnitude, we can make a color. In HSL (hue, saturation, and lightness)
+            color, the hue is between 0 and 360, just like our angle &theta;, so we set the hue of the color to
+            the &theta;. We want the color to be fully saturized, so we set the saturation to 100%. Finally,
+            we set the lightness based on the magnitude, so that the further away the complex number is from the origin,
+            the lighter it is. <span class="staticMath">0+0i</span> is completely black.
+        </p>
+        <p>
+            If you graph the identity function <span class="staticMath">f(z) = z</span> in my program, you can see
+            exactly what color gets mapped to each point. Positive real is red, negative real is cyan, positive
+            imaginary is light green and negative imaginary is deep purple, with complex numbers everywhere in between.
+        </p>
+        <h2>Functions to try </h2>
+        <p>
+            <span class="staticMath">f(z) = (z) </span>
+        </p>
+        <p>
+            <span class="staticMath">f(z) = (z + 2i)(z - 2i) </span>
+        </p>
+        <p>
+            <span class="staticMath">f(z) = \frac{1}{z} </span>
+        </p>
+        <p>
+            <span class="staticMath">f(z) = \log(z)</span>
+        </p>
+        <p>
+            <span class="staticMath">f(z) = \sin(z)\tan(z)</span>
+        </p>
+        <p>
+            <span class="staticMath">f(z) = e^{z}</span>
+        </p>
+        <p>
+            <span class="staticMath">f(z) = gamma(z)</span>
+        </p>
+
     </div>
+</div>
 
 
-
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/mathquill.js"></script>
-    <script type="text/javascript" src="js/math.js"></script>
-    <script type="text/javascript" src="js/staticfunctions.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/mathquill.js"></script>
+<script type="text/javascript" src="js/math.js"></script>
+<script type="text/javascript" src="js/staticfunctions.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
