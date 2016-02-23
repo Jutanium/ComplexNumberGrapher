@@ -12,19 +12,20 @@ const popoutOpacity = 0;
 const complexNumberRegex = /^[+-]?[0-9]*[.]?[0-9]+[+-]{1}[0-9]*[.]?[0-9]+i$/;
 
 var currentWorker; //Web worker. One at a time!
-var precision = 2;
+var precisionBox;
 var input;
 var currentImage; //(Array) Stores the x, y, number, result, magnitude, degree, and light of every point in the image
 var MQ;
 var inputTextbox;
+
 $(document).ready(function() {
     //'Initialization' stuff
     drawAxes();
     $("#popout").css('opacity', popoutOpacity);
     MQ = MathQuill.getInterface(2);
     inputTextbox = MQ.MathField($('#inputTextbox')[0]);
+    precisionBox = $('#precision');
 
-    //EVENTS
     $('#z').on('input', function() { //When the user edits the z directly
         var newNumber = $(this).html();
         updateInput();
@@ -41,6 +42,7 @@ $(document).ready(function() {
             updateDetails(graphFunctionComplexInput(real, imag, input));
         }
     });
+
 
     //Makes sure the user can't put newlines or spaces when they edit the z! The regex will catch other stuff
     $("#z").keypress(function(e){
@@ -65,8 +67,10 @@ $(document).ready(function() {
         var y = e.clientY - Math.round(rect.top);
 
         var point;
-        if (typeof currentImage !== 'undefined')
+        if (typeof currentImage !== 'undefined' && typeof currentImage[x][y] === 'number')
+        {
             point = currentImage[x][y];
+        }
         else point = graphFunction(x, y, input, width, height, 1);
 
         updateDetails(point);
@@ -128,6 +132,8 @@ function fillPixelHSL(x, y, h, s, l) {
 }
 
 function graphPoint(point) {
+    var precision = Number(precisionBox.val());
+    console.log("precision :" + precision);
     for (i = 0; i < precision; i++) {
         for (j = 0; j < precision; j++) {
             //First precision option:
@@ -147,7 +153,12 @@ function updateInput() {
         .replace(/\{(.+)\}/g, '($1)') //replace {whatever} with (whatever)
         .replace(/\\cdot/g, '*') //replace bullet multiplication sign with *
         .replace(/\\ /g, '') //get rid of spaces, which are backslashes followed by spaces in latex
-        .replace(/\\/g, ''); //get rid of remaining backslashes
+        .replace(/\\/g, '') //get rid of remaining backslashes
+        .replace(/pi/g, '(pi)') //self contain pi
+        //self contain e's, i's, and z's that aren't part of function names. (works since no functions have i, z, or e
+        //followed by another i, z, or e. TODO: make work for ceil(x)
+        .replace(/(i|z|e)(?=[0-9]|i|z|e|\s|\))/g, '($1)');
+    alert(input);
 }
 
 //Called by function buttons
@@ -160,8 +171,8 @@ function updateDetails(point) {
     $('#output').html(point.result);
     $('#magnitude').html(point.magnitude);
     $('#degree').html(point.degree);
-    $('#light').html(point.light);
-    $('#arrow').css('left', point.degree);
+    //$('#light').html(point.light);
+    $('#arrow').css('left', point.degree - 5);
 }
 //On graph button click
 function graph() {
@@ -174,7 +185,7 @@ function graph() {
 function startWorker() {
     var grapher = new Worker("js/grapherworker.js");
     currentWorker = grapher;
-    grapher.postMessage({input: input, startX: 0, endX: width, width: width, height: height, precision: precision});
+    grapher.postMessage({input: input, startX: 0, endX: width, width: width, height: height, precision: Number(precisionBox.val())});
     currentImage = new Array(width);
     for (var i = 0; i < currentImage.length; i++) {
         currentImage[i] = new Array(height);

@@ -13,8 +13,9 @@
     <div id="inputWrapper">
         <div id="input">
             <span class="mathquill-embedded-latex">f(z) = </span>
-            <span id="inputTextbox"></span>
+            <span id="inputTextbox">sin(z)</span>
             <button onclick = "graph()">Graph</button>
+            <span class="smallfont">Precision:</span> <input id="precision" type="number" min="1" max="4" value="2">
         </div>
         <div id="functionButtons">
             <button onclick="insertFunction('sin(')">sin</button>
@@ -23,7 +24,7 @@
             <button onclick="insertFunction('log(')">log</button>
             <button onclick="insertFunction('\\pi ')">&pi;</button>
             <button onclick="insertFunction('\\sqrt(')">&radic;</button>
-            <button onclick="insertFunction('|')">| |</button>
+            <button onclick="insertFunction('^2')">&#178;</button>
         </div>
     </div>
     <div id="centerWrapper">
@@ -41,12 +42,11 @@
                 <div> f(z) = <span id="output"> </span> </div>
                 <div> |f(z)| = <span id="magnitude"> </span> </div>
                 <div> &theta; of f(z) = <span id="degree"> </span> </div>
-                <div> HSL light of pixel: <span id = "light"> </span> </div>
+                <!--<div> HSL light of pixel: <span id = "light"> </span> </div>-->
             </div>
 
             <div class="relative">
-                <div id="slider" class="unselectable">
-                </div>
+                <div id="slider" class="unselectable"></div>
                 <div id="arrow"></div>
             </div>
         </div>

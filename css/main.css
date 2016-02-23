@@ -14,6 +14,9 @@ div#input {
     margin-bottom: 20px;
 }
 
+input#precision {
+    width: 30px;
+}
 div#functionButtons {
     margin-bottom: 20px
 }
@@ -77,7 +80,6 @@ div#slider {
     /*display:inline-block;*/
     width: 360px;
     height: 20px;
-    left: 5px;
     float: left;
 }
 
@@ -91,6 +93,7 @@ div#arrow {
     border-right: 5px solid transparent;
     border-bottom: 5px solid black;
 
+    left: -5px;
     position:absolute; /*so it can be positioned with jquery*/
 }
 
@@ -122,3 +125,7 @@ div#popout {
 .relative {
     position:relative;
 }
+
+.smallfont {
+    font-size: 10pt;
+   }
