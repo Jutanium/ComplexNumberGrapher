@@ -155,16 +155,18 @@ function updateInput() {
     //Parse the latex that Mathquill gives us
     input = inputTextbox.latex()
         .replace(/\\frac\{(.+)\}\{(.+)\}/, '($1)/($2)') //replace \frac{1}{2} notation
-        .replace(/\\left/g, '(') //get rid of \left
-        .replace(/\\right/g, ')') //get rid of \right
+        .replace(/\\left/g, '') //get rid of \left
+        .replace(/\\right/g, '') //get rid of \right
         .replace(/\{(.+)\}/g, '($1)') //replace {whatever} with (whatever)
         .replace(/\\cdot/g, '*') //replace bullet multiplication sign with *
         .replace(/\\ /g, '') //get rid of spaces, which are backslashes followed by spaces in latex
         .replace(/\\/g, '') //get rid of remaining backslashes
-        .replace(/pi/g, '(pi)') //self contain pi
+        .replace(/ln\((.+)\)/g, 'log($1,e)') //make ln work
+        //.replace(/pi/g, '(pi)') //self contain pi
         //self contain e's, i's, and z's that aren't part of function names. (works since no functions have i, z, or e
         //followed by another i, z, or e. TODO: make work for ceil(x)
-        .replace(/(i|z|e)(?=[0-9]|i|z|e|\s|\))/g, '($1)');
+        .replace(/(i|z|pi|e)(?=[0-9]|i|z|pi|e|\s|\))/g, '($1)');
+    alert(inputTextbox.latex() + " ::: " + input);
 }
 
 //Called by function buttons
