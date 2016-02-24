@@ -166,7 +166,6 @@ function updateInput() {
         //self contain e's, i's, and z's that aren't part of function names. (works since no functions have i, z, or e
         //followed by another i, z, or e. TODO: make work for ceil(x)
         .replace(/(i|z|pi|e)(?=[0-9]|i|z|pi|e|\s|\))/g, '($1)');
-    alert(inputTextbox.latex() + " ::: " + input);
 }
 
 //Called by function buttons
