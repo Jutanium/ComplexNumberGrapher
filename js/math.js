@@ -13118,6 +13118,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    //   multiplyComplex = multiply.signatures['Complex,Complex']
 	    //   logComplex      = log.signatures['Complex,Complex']
 	    //   return expComplex(multiplyComplex(logComplex(x), y));
+		  //EDITED BY DAN
+		  if (x.im == (new type.Complex()).im && y.im == (new type.Complex()).re)
+		  	return new type.Complex();
 	    return exp(multiply(log(x), y));
 	  }
 
