@@ -18,6 +18,8 @@ function graphFunctionComplexInput(real, imag, func) {
     var eval = math.eval(replaced);
     console.log(eval);
     var result;
+    console.log(eval.re == 'Infinity' || eval.re == '-Infinity');
+    console.log(eval.im == 'Infinity' || eval.im == '-Infinity');
     if (eval == '-Infinity')
         result = '-Infinity';
     else if (eval == 'Infinity' || eval == 'NaN - aNi')
@@ -29,7 +31,7 @@ function graphFunctionComplexInput(real, imag, func) {
             result = '';
             //Don't attempt to round any Infinity numbers!
             if (eval.re == 'Infinity' || eval.re == '-Infinity')
-                result += result.re;
+                result += eval.re;
             else result += math.round(eval.re, roundTo);
             result += (eval.im < 0 ? '' : '+');
             if (eval.im == 'Infinity' || eval.im == '-Infinity')
@@ -49,11 +51,12 @@ function graphFunctionComplexInput(real, imag, func) {
     var number = real + (imag < 0 ? '' : '+') + imag + 'i';
 
 
-    if (typeof magnitude === 'number' && magnitude != 'NaN' && magnitude != 'Infinity')
+    if (typeof magnitude === 'number' && !isNaN(magnitude) && magnitude != 'Infinity'
+        && magnitude != '-Infinity')
         magnitude = math.round(magnitude, roundTo);
-    if (typeof degree === 'number' && degree != 'NaN')
+    if (typeof degree === 'number' && !isNaN(degree))
         degree = math.round(degree, roundTo);
-    if (typeof light === 'number' && light != 'NaN')
+    if (typeof light === 'number' && !isNaN(light))
         light = math.round(light, roundTo);
     return {
         result: result,
