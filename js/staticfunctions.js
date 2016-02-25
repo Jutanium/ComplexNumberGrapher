@@ -12,7 +12,7 @@ function graphFunctionComplexInput(real, imag, func) {
     var replaced = func
         .replace(/\|(.+)\|/, "abs($1)") //turn |whatever| into abs(whatever)
         .replace(/z/g, '(' + real + '+' + imag + 'i' + ')') //replace z with input
-        .replace(/0\+0i/g, '0'); //0+0i is bugged in some functions, such as f(z) = z^2, so make it 0
+        .replace(/(-{0,1}\d)\+0i/g, '$1'); //make x+0i x, because x+0i is bugged in some functions in mathjs
         //.replace()
     console.log(replaced);
     var eval = math.eval(replaced);
