@@ -145,6 +145,7 @@ function graphPoint(point) {
             //First precision option:
             //fillPixelHSL(point.x * precision + i, point.y * precision + j, point.degree, 100, point.light);
             //Second precision option
+
             fillPixelHSL(point.x + i, point.y + j, point.degree, 100, point.light);
             currentImage[point.x + i][point.y + j] = point;
         }
