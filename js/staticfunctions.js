@@ -1,4 +1,4 @@
-const roundTo = 2;
+const roundTo = 15;
 function graphFunction(x, y, func, width, height) {
     var real = (-1 * math.floor(width / 2) + x) / 25;
     var imag = (-1 * math.floor(height / 2 ) + y) / -25;
@@ -26,15 +26,18 @@ function graphFunctionComplexInput(real, imag, func) {
         result = 'Infinity';
     else {
         if (typeof eval.re === "undefined") //If the answer isn't in the form of x+yi, make it so
-            result = math.round(eval, roundTo) + '+0i';
+        {
+            if (!isNaN(eval))
+                result = math.round(eval, roundTo) + '+0i';
+        }
         else {
             result = '';
             //Don't attempt to round any Infinity numbers!
-            if (eval.re == 'Infinity' || eval.re == '-Infinity')
+            if (eval.re == 'Infinity' || eval.re == '-Infinity' || isNaN(eval.im))
                 result += eval.re;
             else result += math.round(eval.re, roundTo);
-            result += (eval.im < 0 ? '' : '+');
-            if (eval.im == 'Infinity' || eval.im == '-Infinity')
+            result += (eval.im !== 0 && eval.im < 0 ? '' : '+');
+            if (eval.im == 'Infinity' || eval.im == '-Infinity' || isNaN(eval.im))
                 result += eval.im;
             else result += math.round(eval.im, roundTo) + 'i';
         }

@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7a0fb395-ed9f-478c-964c-4aa818fbd6f5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/staticfunctions.js" afterPath="$PROJECT_DIR$/js/staticfunctions.js" />
     </list>
     <ignored path="ComplexNumberGrapher.iws" />
@@ -25,11 +24,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33858266">
-              <caret line="174" column="12" selection-start-line="174" selection-start-column="12" selection-end-line="174" selection-end-column="12" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="184" column="20" selection-start-line="184" selection-start-column="20" selection-end-line="184" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -39,7 +38,7 @@
         <entry file="file://$PROJECT_DIR$/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="35" column="39" selection-start-line="35" selection-start-column="39" selection-end-line="35" selection-end-column="39" />
+              <caret line="177" column="25" selection-start-line="177" selection-start-column="25" selection-end-line="177" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -49,27 +48,27 @@
         <entry file="file://$PROJECT_DIR$/css/main.css">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="138" column="22" selection-start-line="138" selection-start-column="22" selection-end-line="138" selection-end-column="22" />
+              <caret line="138" column="18" selection-start-line="138" selection-start-column="18" selection-end-line="138" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="staticfunctions.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="staticfunctions.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/staticfunctions.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+              <caret line="0" column="18" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="math.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/math.js">
+      <file leaf-file-name="grapherworker.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/grapherworker.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="7905" column="9" selection-start-line="7905" selection-start-column="9" selection-end-line="7905" selection-end-column="9" />
+              <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -89,10 +88,9 @@
         <option value="www.wolframalpha.com/scripts/wa.min.js?v=0.99.0&amp;bt=1601291753" />
         <option value="$PROJECT_DIR$/css/mathquill.css" />
         <option value="$PROJECT_DIR$/css/main.css" />
-        <option value="$PROJECT_DIR$/js/main.js" />
-        <option value="$PROJECT_DIR$/js/math.js" />
-        <option value="$PROJECT_DIR$/js/staticfunctions.js" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/main.js" />
+        <option value="$PROJECT_DIR$/js/staticfunctions.js" />
       </list>
     </option>
   </component>
@@ -102,10 +100,10 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="4" />
-    <option name="y" value="23" />
-    <option name="width" value="1276" />
-    <option name="height" value="777" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1696" />
+    <option name="height" value="1026" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -132,7 +130,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -168,12 +165,12 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -315,67 +312,13 @@
       <option name="project" value="LOCAL" />
       <updated>1456202645430</updated>
     </task>
-    <task id="LOCAL-00009" summary="content edit">
-      <created>1456246482207</created>
+    <task id="LOCAL-00009" summary="Fix fractions">
+      <created>1456202965762</created>
       <option name="number" value="00009" />
       <option name="project" value="LOCAL" />
-      <updated>1456246482207</updated>
+      <updated>1456202965762</updated>
     </task>
-    <task id="LOCAL-00010" summary="content edit">
-      <created>1456246549496</created>
-      <option name="number" value="00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1456246549496</updated>
-    </task>
-    <task id="LOCAL-00011" summary="content edit">
-      <created>1456247443013</created>
-      <option name="number" value="00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1456247443013</updated>
-    </task>
-    <task id="LOCAL-00012" summary="content edit">
-      <created>1456248191314</created>
-      <option name="number" value="00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1456248191314</updated>
-    </task>
-    <task id="LOCAL-00013" summary="content edit">
-      <created>1456248527857</created>
-      <option name="number" value="00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1456248527857</updated>
-    </task>
-    <task id="LOCAL-00014" summary="content edit">
-      <created>1456248594307</created>
-      <option name="number" value="00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1456248594307</updated>
-    </task>
-    <task id="LOCAL-00015" summary="fix shillito's name">
-      <created>1456269957342</created>
-      <option name="number" value="00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1456269957342</updated>
-    </task>
-    <task id="LOCAL-00016" summary="fix pi, ln, log">
-      <created>1456280877058</created>
-      <option name="number" value="00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1456280877058</updated>
-    </task>
-    <task id="LOCAL-00017" summary="fix (0+0i)^2 issue">
-      <created>1456333921636</created>
-      <option name="number" value="00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1456333921636</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Fix NaN issue">
-      <created>1456409203585</created>
-      <option name="number" value="00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1456409203585</updated>
-    </task>
-    <option name="localTasksCounter" value="19" />
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TodoView">
@@ -388,13 +331,13 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="4" y="23" width="1276" height="777" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2988048" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3386905" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969433" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896653" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22598253" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7611465" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -406,7 +349,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329927" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -430,15 +373,12 @@
     <MESSAGE value="Update mathquill, parse Latex, fix bugs such as sqrt(log(z))" />
     <MESSAGE value="Make buttons work" />
     <MESSAGE value="content edit" />
-    <MESSAGE value="fix shillito's name" />
-    <MESSAGE value="fix pi, ln, log" />
-    <MESSAGE value="fix (0+0i)^2 issue" />
-    <MESSAGE value="Fix NaN issue" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix NaN issue" />
+    <MESSAGE value="Fix fractions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix fractions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="43" />
+      <option name="time" value="20" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -773,10 +713,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/grapherworker.js">
+    <entry file="file://$PROJECT_DIR$/js/math.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+        <state vertical-scroll-proportion="-0.038288288">
+          <caret line="29493" column="36" selection-start-line="29493" selection-start-column="36" selection-end-line="29493" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -794,18 +734,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/main.css">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="138" column="22" selection-start-line="138" selection-start-column="22" selection-end-line="138" selection-end-column="22" />
+          <caret line="184" column="20" selection-start-line="184" selection-start-column="20" selection-end-line="184" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/math.js">
+    <entry file="file://$PROJECT_DIR$/js/grapherworker.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="7905" column="9" selection-start-line="7905" selection-start-column="9" selection-end-line="7905" selection-end-column="9" />
+          <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="138" column="18" selection-start-line="138" selection-start-column="18" selection-end-line="138" selection-end-column="18" />
           <folding />
         </state>
       </provider>
@@ -813,7 +761,7 @@
     <entry file="file://$PROJECT_DIR$/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="39" selection-start-line="35" selection-start-column="39" selection-end-line="35" selection-end-column="39" />
+          <caret line="177" column="25" selection-start-line="177" selection-start-column="25" selection-end-line="177" selection-end-column="25" />
           <folding />
         </state>
       </provider>
@@ -821,15 +769,7 @@
     <entry file="file://$PROJECT_DIR$/js/staticfunctions.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33858266">
-          <caret line="174" column="12" selection-start-line="174" selection-start-column="12" selection-end-line="174" selection-end-column="12" />
+          <caret line="0" column="18" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="18" />
           <folding />
         </state>
       </provider>
