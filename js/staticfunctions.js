@@ -22,8 +22,10 @@ function graphFunctionComplexInput(real, imag, func) {
     console.log(eval.im == 'Infinity' || eval.im == '-Infinity');
     if (eval == '-Infinity')
         result = '-Infinity';
-    else if (eval == 'Infinity' || eval == 'NaN - aNi')
+    else if (eval == 'Infinity')
         result = 'Infinity';
+    else if (eval == 'NaN - aNi')
+        result = 'NaN';
     else {
         if (typeof eval.re === "undefined") //If the answer isn't in the form of x+yi, make it so
         {
@@ -33,7 +35,7 @@ function graphFunctionComplexInput(real, imag, func) {
         else {
             var re, im, sign;
             //Don't attempt to round any Infinity numbers!
-            if (eval.re == 'Infinity' || eval.re == '-Infinity' || isNaN(eval.im))
+            if (eval.re == 'Infinity' || eval.re == '-Infinity' || isNaN(eval.re))
                 re = eval.re;
             else re = math.round(eval.re, roundTo);
             if (eval.im == 'Infinity' || eval.im == '-Infinity' || isNaN(eval.im))

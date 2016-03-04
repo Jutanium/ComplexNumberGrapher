@@ -124,19 +124,17 @@ function drawAxes() {
     axesContext.fill();
 }
 
-//UNUSED
-function fillPixelRGB(x, y, r, g, b, a) {
-    graphContext.beginPath();
-    graphContext.fillStyle = "rgba(" + r + "," + g + "," + b + "," + (a / 255) + ")";
-    graphContext.fillRect(x, y, 1, 1);
-}
-
 function fillPixelHSL(x, y, h, s, l) {
     graphContext.beginPath();
     graphContext.fillStyle = "hsl(" + h + "," + s + "%," + l + "%)";
     graphContext.fillRect(x, y, 1, 1);
 }
 
+function fillPixelGray(x, y) {
+    graphContext.beginPath();
+    graphContext.fillStyle = "#999999";
+    graphContext.fillRect(x, y, 1, 1);
+}
 function graphPoint(point) {
     var precision = Number(precisionBox.val());
     console.log("precision :" + precision);
@@ -146,6 +144,8 @@ function graphPoint(point) {
             //fillPixelHSL(point.x * precision + i, point.y * precision + j, point.degree, 100, point.light);
             //Second precision option
 
+            if (point.result == "NaN");
+                fillPixelGray(point.x + i, point.y + j);
             fillPixelHSL(point.x + i, point.y + j, point.degree, 100, point.light);
             currentImage[point.x + i][point.y + j] = point;
         }
