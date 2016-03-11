@@ -1,4 +1,4 @@
-const roundTo = 2;
+const roundTo = 2; //test atom
 function graphFunction(x, y, func, width, height) {
     var real = (-1 * math.floor(width / 2) + x) / 25;
     var imag = (-1 * math.floor(height / 2 ) + y) / -25;
@@ -54,7 +54,7 @@ function graphFunctionComplexInput(real, imag, func) {
     if (degree < 0)
         degree = (degree + 360);
 
-    var light = isNaN (magnitude) ? 100 : math.atan(magnitude/2) / (Math.PI / 2) * 100;
+    var light = isNaN (magnitude) ? 100 : math.atan(magnitude) / (Math.PI / 2) * 100;
 
     var number = real + (imag < 0 ? '' : '+') + imag + 'i';
 
