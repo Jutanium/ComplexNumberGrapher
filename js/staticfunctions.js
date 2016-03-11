@@ -1,4 +1,4 @@
-const roundTo = 3; //test atom
+const roundTo = 2; //test atom
 function graphFunction(x, y, func, width, height) {
     var real = (-1 * math.floor(width / 2) + x) / 25;
     var imag = (-1 * math.floor(height / 2 ) + y) / -25;
