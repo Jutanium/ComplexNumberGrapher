@@ -12,6 +12,8 @@ const popoutOpacity = 0;
 const complexNumberRegex = /^[+-]?[0-9]*[.]?[0-9]+[+-]{1}[0-9]*[.]?[0-9]+i$/;
 
 var currentWorker; //Web worker. One at a time!
+var quickWorker; //Renders the function at precision 10
+var quickPrecision = 10;
 var precisionBox;
 var input;
 var currentImage; //(Array) Stores the x, y, number, result, magnitude, degree, and light of every point in the image
@@ -135,8 +137,8 @@ function fillPixelGray(x, y) {
     graphContext.fillStyle = "#999999";
     graphContext.fillRect(x, y, 1, 1);
 }
-function graphPoint(point) {
-    var precision = Number(precisionBox.val());
+function graphPoint(point, precision) {
+
     console.log("precision :" + precision);
     for (i = 0; i < precision; i++) {
         for (j = 0; j < precision; j++) {
@@ -186,14 +188,29 @@ function updateDetails(point) {
 function graph() {
     graphContext.clearRect(0, 0, graphCanvas.width, graphCanvas.height); //Clear the graph
     if (typeof currentWorker !== 'undefined') currentWorker.terminate(); //Kill the current worker
+    if (typeof quickWorker !== 'undefined') quickWorker.terminate();
     updateInput();
+
+    quickWorker = new Worker("js/grapherWorker.js");
+    quickWorker.postMessage({input: input, startX: 0, endX: width, width: width, height: height, precision: quickPrecision})
+    currentImage = new Array(width);
+    for (var i = 0; i < currentImage.length; i++) {
+        currentImage[i] = new Array(height);
+    }
+    quickWorker.onmessage = function (e) {
+        /*if (e.data.done === true)
+            startWorker();
+        else*/ graphPoint(e.data, quickPrecision);
+    }
+
     startWorker();
 }
 
 function startWorker() {
     var grapher = new Worker("js/grapherworker.js");
     currentWorker = grapher;
-    grapher.postMessage({input: input, startX: 0, endX: width, width: width, height: height, precision: Number(precisionBox.val())});
+    var precision = Number(precisionBox.val());
+    grapher.postMessage({input: input, startX: 0, endX: width, width: width, height: height, precision: precision});
     currentImage = new Array(width);
     for (var i = 0; i < currentImage.length; i++) {
         currentImage[i] = new Array(height);
@@ -201,8 +218,6 @@ function startWorker() {
     grapher.onmessage = function (e) {
         var point = e.data;
         //console.log(point.x + ", " + point.y);
-        graphPoint(point);
+        graphPoint(point, precision);
     }
 }
-
-

@@ -22,6 +22,7 @@ onmessage = function (e) {
         }
     }
 
+    postMessage({done: true});
     close();
     /*
      var result = math.eval(func.replace('z', '(' + real + '+' + imag + 'i') + ')');
