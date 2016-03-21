@@ -13,7 +13,7 @@ const complexNumberRegex = /^[+-]?[0-9]*[.]?[0-9]+[+-]{1}[0-9]*[.]?[0-9]+i$/;
 
 var currentWorker; //Web worker. One at a time!
 var quickWorker; //Renders the function at precision 10
-var quickPrecision = 20;
+var quickPrecision = 10;
 var precisionBox;
 var input;
 var currentImage; //(Array) Stores the x, y, number, result, magnitude, degree, and light of every point in the image
@@ -198,12 +198,12 @@ function graph() {
         currentImage[i] = new Array(height);
     }
     quickWorker.onmessage = function (e) {
-        if (e.data.done === true)
+        /*if (e.data.done === true)
             startWorker();
-        else graphPoint(e.data, quickPrecision);
+        else*/ graphPoint(e.data, quickPrecision);
     }
 
-    //startWorker();
+    startWorker();
 }
 
 function startWorker() {
