@@ -121,9 +121,15 @@ div#popout {
     background-color: white;
 }
 
+#checkboxDiv {
+    margin-top: 35px;
+}
+#checkboxDiv div {
+    margin-bottom: 5px;
+}
 
 #howtoBreak {
-    margin-top: 50px;
+    margin-top: 15px;
 }
 
 #howto {

@@ -20,12 +20,15 @@ var currentImage; //(Array) Stores the x, y, number, result, magnitude, degree, 
 var MQ;
 var inputTextbox;
 
+var nanIsInfinity = $('#infinityCheckbox').prop('checked');
+
 $(document).ready(function() {
     //'Initialization' stuff
     $("#popout").css('opacity', popoutOpacity);
 
     MQ = MathQuill.getInterface(2);
     inputTextbox = MQ.MathField($('#inputTextbox')[0]);
+
     $(".staticMath").each(function() {
         MQ.StaticMath(this);
     })
@@ -47,7 +50,7 @@ $(document).ready(function() {
             var imag = newNumber.substring(newNumber.charAt(indexOfSplit) == '-' ? indexOfSplit : indexOfSplit + 1,
                 newNumber.length-1);
             console.log("imag: " + imag);
-            updateDetails(graphFunctionComplexInput(real, imag, input));
+            updateDetails(graphFunctionComplexInput(real, imag, input, nanIsInfinity));
         }
     });
 
@@ -79,7 +82,7 @@ $(document).ready(function() {
         {
             point = currentImage[x][y];
         }
-        else point = graphFunction(x, y, input, width, height, 1);
+        else point = graphFunction(x, y, input, width, height, nanIsInfinity);
 
         updateDetails(point);
 
@@ -96,6 +99,15 @@ $(document).ready(function() {
         $("#popout").css('opacity', popoutOpacity);
     });
 
+    $('#axesCheckbox').change(function() {
+        if ($(this).prop('checked'))
+            drawAxes();
+        else  axesContext.clearRect(0, 0, graphCanvas.width, graphCanvas.height);
+    });
+
+    $('#infinityCheckbox').change(function() {
+        nanIsInfinity = $('#infinityCheckbox').prop('checked');
+    });
 });
 
 function line(context, x, y, toX, toY, strokewidth) {
@@ -145,10 +157,11 @@ function graphPoint(point, precision) {
             //First precision option:
             //fillPixelHSL(point.x * precision + i, point.y * precision + j, point.degree, 100, point.light);
             //Second precision option
-
-            if (point.result == "NaN");
+            if (point.result == "NaN")
                 fillPixelGray(point.x + i, point.y + j);
-            fillPixelHSL(point.x + i, point.y + j, point.degree, 100, point.light);
+            else if (point.light != 100)
+                fillPixelHSL(point.x + i, point.y + j, point.degree, 100, point.light);
+            else fillPixelHSL(point.x + i, point.y + j, 0, 100, 100);
             currentImage[point.x + i][point.y + j] = point;
         }
     }
@@ -165,6 +178,9 @@ function updateInput() {
         .replace(/\\ /g, '') //get rid of spaces, which are backslashes followed by spaces in latex
         .replace(/\\/g, '') //get rid of remaining backslashes
         .replace(/ln\((.+)\)/g, 'log($1,e)') //make ln work
+        .replace(/arcsin\((.+)\)/g, 'asin($1)') //inverse trig functions
+        .replace(/arccos\((.+)\)/g, 'acos($1)')
+        .replace(/arctan\((.+)\)/g, 'atan($1)')
         //.replace(/pi/g, '(pi)') //self contain pi
         //self contain e's, i's, and z's that aren't part of function names. (works since no functions have i, z, or e
         //followed by another i, z, or e. TODO: make work for ceil(x)
@@ -192,7 +208,7 @@ function graph() {
     updateInput();
 
     quickWorker = new Worker("js/grapherWorker.js");
-    quickWorker.postMessage({input: input, startX: 0, endX: width, width: width, height: height, precision: quickPrecision})
+    quickWorker.postMessage({input: input, startX: 0, endX: width, width: width, height: height, precision: quickPrecision, nanIsInfinity: nanIsInfinity})
     currentImage = new Array(width);
     for (var i = 0; i < currentImage.length; i++) {
         currentImage[i] = new Array(height);
@@ -210,7 +226,7 @@ function startWorker() {
     var grapher = new Worker("js/grapherworker.js");
     currentWorker = grapher;
     var precision = Number(precisionBox.val());
-    grapher.postMessage({input: input, startX: 0, endX: width, width: width, height: height, precision: precision});
+    grapher.postMessage({input: input, startX: 0, endX: width, width: width, height: height, precision: precision, nanIsInfinity: nanIsInfinity});
     currentImage = new Array(width);
     for (var i = 0; i < currentImage.length; i++) {
         currentImage[i] = new Array(height);

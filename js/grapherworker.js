@@ -7,6 +7,7 @@ onmessage = function (e) {
     var width = e.data.width;
     var height = e.data.height;
     var precision = e.data.precision;
+    var nanIsInfinity = e.data.nanIsInfinity;
     console.log("precision: " + precision);
     //First precision option
     /*for (var x = math.floor(startX / precision); x < math.floor(endX / precision); x++) {
@@ -18,7 +19,7 @@ onmessage = function (e) {
     //Second precision option
     for (var x = startX; x < endX; x += precision) {
         for (var y = 0; y < height; y += precision) {
-            postMessage(graphFunction(x, y, func, width, height));
+            postMessage(graphFunction(x, y, func, width, height, nanIsInfinity));
         }
     }
 
