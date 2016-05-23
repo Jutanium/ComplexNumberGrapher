@@ -1,4 +1,7 @@
 const roundTo = 2;
+const toDegrees = 360 / (2 * math.pi);
+const halfpi = math.pi / 2;
+
 function graphFunction(x, y, func, width, height, nanIsInfinity) {
     var real = (-1 * math.floor(width / 2) + x) / 25;
     var imag = (-1 * math.floor(height / 2 ) + y) / -25;
@@ -8,6 +11,7 @@ function graphFunction(x, y, func, width, height, nanIsInfinity) {
     point.y = y;
     return point;
 }
+
 function graphFunctionComplexInput(real, imag, func, nanIsInfinity) {
     console.log(func);
     var replaced = func
@@ -57,12 +61,12 @@ function graphFunctionComplexInput(real, imag, func, nanIsInfinity) {
     var magnitude = math.abs(eval);
 
 
-    var degree = math.arg(eval) * 360 / (2 * Math.PI);
+    var degree = math.arg(eval) * toDegrees;
     if (degree < 0)
         degree = (degree + 360);
 
 
-    var light = isNaN (magnitude) || result.indexOf('Infinity') > -1 ? 100 : math.atan(magnitude) / (Math.PI / 2) * 100;
+    var light = isNaN (magnitude) || result.indexOf('Infinity') > -1 ? 100 : math.atan(magnitude) / halfpi * 100;
     console.log('light:' + light);
     var number = real + (imag < 0 ? '' : '+') + imag + 'i';
 
