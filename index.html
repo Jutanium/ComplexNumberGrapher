@@ -107,11 +107,11 @@
             harder than graphing
             normal functions. Why? A normal function takes in a number <i>x</i> and outputs a number <i>y</i>. But a
             complex function
-            takes in a complex number, or point, <i>z</i> and outputs another complex number or point <i>w</i>.
+            takes in a complex number, or point, <i>z</i> and outputs another complex number <i>w</i>.
             We'd need four dimensions to graph a point to a point!
         </p>
         <p>
-            One solution to this is called <b>complex domain coloring</b>, and that's the what I've implemented in this
+            One solution to this is called <b>complex domain coloring</b>, and that's what I've implemented in this
             project.
             Domain coloring makes every input complex number a point on a 2D graph, and every output complex number a
             color.
@@ -137,7 +137,7 @@
             <span class="staticMath">3+4i</span> is 5 units away from the origin.
         </p>
         <p>
-            Once we know our angle and magnitude, we can make a color. In HSL (hue, saturation, and lightness)
+            Once we know our angle and magnitude, we can use those values to make a color. In HSL (hue, saturation, and lightness)
             color, the hue is between 0 and 360, just like our angle &theta;, so we set the hue of the color to
             the &theta;. We want the color to be fully saturized, so we set the saturation to 100%. Finally,
             we set the lightness based on the magnitude, so that the further away the complex number is from the origin,
